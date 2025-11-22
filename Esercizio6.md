@@ -33,7 +33,10 @@ flowchart TD
     INIT --> LOOP{i < 20?}
     LOOP -->|NO| PRINT[Stampa contatore]
     LOOP -->|SÌ| READ["Inserisci numero tra 0 e 9:"<br/>Leggi num]
-    READ --> CHECK{num > 5?}
+    READ --> VALIDATE{"num < 0 OR<br/>num > 9?"}
+    VALIDATE -->|SÌ| ERROR["Errore! Il numero deve essere tra 0 e 9"]
+    ERROR --> READ
+    VALIDATE -->|NO| CHECK{num > 5?}
     CHECK -->|SÌ| INCR_COUNT[contatore = contatore + 1]
     CHECK -->|NO| INCR_I[i = i + 1]
     INCR_COUNT --> INCR_I
@@ -51,6 +54,8 @@ flowchart TD
    - Per ogni iterazione da 0 a 19:
      - Chiede all'utente di inserire un numero
      - Legge il numero `num`
+     - Valida che `num` sia tra 0 e 9 (inclusi)
+       - Se non valido, mostra errore e richiede di nuovo
      - Verifica se `num > 5`
        - Se sì, incrementa `contatore`
      - Incrementa `i` per passare alla prossima iterazione

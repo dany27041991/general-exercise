@@ -44,13 +44,21 @@ flowchart TD
     DECLARE --> INIT1["i = 0"]
     INIT1 --> LOOP1{"i < 10?"}
     LOOP1 -->|NO| INIT2["i = 0"]
-    LOOP1 -->|SÌ| READ1["Leggi numero<br/>array1[i] = numero"]
-    READ1 --> INCR1["i = i + 1"]
+    LOOP1 -->|SÌ| READ1["Inserisci numero non negativo:"<br/>Leggi numero"]
+    READ1 --> VALID1{"numero < 0?"}
+    VALID1 -->|SÌ| ERROR1["Errore! Riprova"]
+    ERROR1 --> READ1
+    VALID1 -->|NO| STORE1["array1[i] = numero"]
+    STORE1 --> INCR1["i = i + 1"]
     INCR1 --> LOOP1
     INIT2 --> LOOP2{"i < 10?"}
     LOOP2 -->|NO| INIT3["i = 0"]
-    LOOP2 -->|SÌ| READ2["Leggi numero<br/>array2[i] = numero"]
-    READ2 --> INCR2["i = i + 1"]
+    LOOP2 -->|SÌ| READ2["Inserisci numero non negativo:"<br/>Leggi numero"]
+    READ2 --> VALID2{"numero < 0?"}
+    VALID2 -->|SÌ| ERROR2["Errore! Riprova"]
+    ERROR2 --> READ2
+    VALID2 -->|NO| STORE2["array2[i] = numero"]
+    STORE2 --> INCR2["i = i + 1"]
     INCR2 --> LOOP2
     INIT3 --> LOOP3{"i < 10?"}
     LOOP3 -->|NO| INIT4["somma = 0<br/>i = 0"]

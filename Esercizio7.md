@@ -27,8 +27,15 @@ int main() {
     
     // Ciclo per 20 iterazioni
     for (i = 0; i < 20; i++) {
-        printf("Numero %d: ", i + 1);
-        scanf("%d", &num);
+        do {
+            printf("Numero %d: ", i + 1);
+            scanf("%d", &num);
+            
+            // Verifica che il numero sia tra 0 e 9
+            if (num < 0 || num > 9) {
+                printf("Errore! Il numero deve essere compreso tra 0 e 9.\n");
+            }
+        } while (num < 0 || num > 9);  // Ripete finché non è valido
         
         // Verifica se il numero è maggiore di 5
         if (num > 5) {
@@ -58,8 +65,15 @@ int i;             // Variabile per il ciclo
 ### 2. Ciclo principale
 ```c
 for (i = 0; i < 20; i++) {
-    printf("Numero %d: ", i + 1);
-    scanf("%d", &num);
+    do {
+        printf("Numero %d: ", i + 1);
+        scanf("%d", &num);
+        
+        // Verifica che il numero sia tra 0 e 9
+        if (num < 0 || num > 9) {
+            printf("Errore! Il numero deve essere compreso tra 0 e 9.\n");
+        }
+    } while (num < 0 || num > 9);  // Ripete finché non è valido
     
     if (num > 5) {
         contatore = contatore + 1;
@@ -68,8 +82,11 @@ for (i = 0; i < 20; i++) {
 ```
 - Il ciclo viene eseguito 20 volte (da `i = 0` a `i = 19`)
 - Ad ogni iterazione:
+  - Usa un ciclo `do-while` per validare l'input
   - Chiede all'utente di inserire un numero
   - Legge il numero con `scanf()`
+  - Verifica che il numero sia compreso tra 0 e 9 (inclusi)
+  - Se non valido, mostra un messaggio di errore e richiede di nuovo
   - Se `num > 5`, incrementa il contatore
 
 ### 3. Output
@@ -78,9 +95,9 @@ printf("\nSono stati inseriti %d numeri maggiori di 5.\n", contatore);
 ```
 - Stampa il risultato finale
 
-## Versione con validazione input
+## Versione semplificata (senza validazione)
 
-Se vogliamo assicurarci che l'utente inserisca solo numeri tra 0 e 9:
+Se vogliamo una versione più semplice che non verifica l'input (non consigliata, ma funziona se l'utente inserisce sempre numeri corretti):
 
 ```c
 #include <stdio.h>
@@ -183,8 +200,15 @@ int main() {
     
     // Lettura dei numeri
     for (i = 0; i < 20; i++) {
-        printf("Numero %d: ", i + 1);
-        scanf("%d", &numeri[i]);
+        do {
+            printf("Numero %d: ", i + 1);
+            scanf("%d", &numeri[i]);
+            
+            // Verifica che il numero sia tra 0 e 9
+            if (numeri[i] < 0 || numeri[i] > 9) {
+                printf("Errore! Il numero deve essere compreso tra 0 e 9.\n");
+            }
+        } while (numeri[i] < 0 || numeri[i] > 9);  // Ripete finché non è valido
     }
     
     // Conteggio numeri > 5
@@ -204,5 +228,5 @@ int main() {
 
 - **Condizione**: `num > 5` significa che vengono contati solo 6, 7, 8, 9
 - **Efficienza**: Non è necessario memorizzare tutti i numeri, basta contare
-- **Validazione**: Opzionale, ma utile per garantire input corretti
+- **Validazione**: Essenziale per rispettare la traccia che richiede numeri tra 0 e 9
 - **Incremento contatore**: `contatore++` è equivalente a `contatore = contatore + 1`

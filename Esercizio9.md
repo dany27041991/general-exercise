@@ -102,6 +102,8 @@ for (i = 0; i < 20; i++) {
 
 ## Versione semplificata (senza validazione)
 
+**Nota**: Questa versione non verifica che i numeri siano non negativi. Per rispettare la traccia, è consigliabile usare la versione principale con validazione.
+
 ```c
 #include <stdio.h>
 
@@ -114,6 +116,7 @@ int main() {
     for (i = 0; i < 20; i++) {
         printf("Numero %d: ", i + 1);
         scanf("%d", &array1[i]);
+        // ATTENZIONE: Questa versione non verifica che il numero sia non negativo
     }
     
     // Calcolo del secondo array

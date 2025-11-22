@@ -40,8 +40,12 @@ flowchart TD
     DECLARE --> INIT1["i = 0"]
     INIT1 --> LOOP1{"i < 20?"}
     LOOP1 -->|NO| INIT2["i = 0"]
-    LOOP1 -->|SÌ| READ["Inserisci numero non negativo:"<br/>Leggi numero<br/>array1[i] = numero]
-    READ --> INCR1["i = i + 1"]
+    LOOP1 -->|SÌ| READ["Inserisci numero non negativo:"<br/>Leggi numero]
+    READ --> VALID{"numero < 0?"}
+    VALID -->|SÌ| ERROR["Errore! Il numero deve essere non negativo"]
+    ERROR --> READ
+    VALID -->|NO| STORE["array1[i] = numero"]
+    STORE --> INCR1["i = i + 1"]
     INCR1 --> LOOP1
     INIT2 --> LOOP2{"i < 20?"}
     LOOP2 -->|NO| PRINT["Stampa array2<br/>opzionale"]
@@ -62,7 +66,10 @@ flowchart TD
    - Ciclo da `i = 0` a `i = 19` (20 iterazioni)
    - Per ogni iterazione:
      - Chiede all'utente di inserire un numero non negativo
-     - Legge il numero e lo salva in `array1[i]`
+     - Legge il numero
+     - Valida che il numero sia non negativo (>= 0)
+       - Se non valido, mostra errore e richiede di nuovo
+     - Salva il numero in `array1[i]`
      - Incrementa `i`
 
 3. **Calcolo sottrazione posizione** (secondo ciclo):
