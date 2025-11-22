@@ -44,7 +44,7 @@ flowchart TD
     DECLARE --> INIT1["i = 0"]
     INIT1 --> LOOP1{"i < 10?"}
     LOOP1 -->|NO| INIT2["i = 0"]
-    LOOP1 -->|SÌ| READ1["Inserisci numero non negativo:"<br/>Leggi numero"]
+    LOOP1 -->|SÌ| READ1["Inserisci numero non negativo<br/>Leggi numero"]
     READ1 --> VALID1{"numero < 0?"}
     VALID1 -->|SÌ| ERROR1["Errore! Riprova"]
     ERROR1 --> READ1
@@ -53,7 +53,7 @@ flowchart TD
     INCR1 --> LOOP1
     INIT2 --> LOOP2{"i < 10?"}
     LOOP2 -->|NO| INIT3["i = 0"]
-    LOOP2 -->|SÌ| READ2["Inserisci numero non negativo:"<br/>Leggi numero"]
+    LOOP2 -->|SÌ| READ2["Inserisci numero non negativo<br/>Leggi numero"]
     READ2 --> VALID2{"numero < 0?"}
     VALID2 -->|SÌ| ERROR2["Errore! Riprova"]
     ERROR2 --> READ2
